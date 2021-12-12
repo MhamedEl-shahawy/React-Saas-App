@@ -1,13 +1,15 @@
 import styled from "styled-components";
-
 export const Head = styled.header`
-   position:relative;
-   width:100%;
+   position:fixed;
+   width:18%;
    height:100vh;
-   background-color:#005FFD;
-     color:#64A4FE;
+   background-color:#fff;
+   border-top-right-radius:25px;
+   padding-top:15px;
+     color:#000;
+     z-index:9999;
+      top:15%;
      @media (max-width:999px){
-       position:absolute;
        top:0;
        left:${({navToggle})=> navToggle ? 0: "-100%"};
        width:50%;
@@ -18,32 +20,26 @@ export const Head = styled.header`
 `;
 export const Nav = styled.nav`
   width:100%;
-
 `;
-export const LogoWrapper = styled.div`
-  background-color:#005FFD;
-  width:100%;
-  padding:0.5em;
-  display:flex;
-  justify-content:center;
-`;
-export const Logo = styled.h1`
-  color:#fff;
-  font-size:2rem;
-  font-weight:800;
-  font-family: 'Permanent Marker', cursive;
+export const NavTitle = styled.h4`
+  color:#9E9E9E;
+  padding-left:15px;
+  font-weight:400;
+  padding-bottom:15px;
 `;
 export const Lists = styled.ul`
 
 ${
   ({clicked}) => clicked ?
  `& li:nth-child(${clicked}){
-     background-color:rgba(11, 77, 207,0.7);
-     border-top-left-radius:50px;
-     border-bottom-left-radius:50px;
-     color:#fff;
+     background-color:rgba(118, 56, 255, 0.05);
+     border-left:4px solid #621AFF;
+     color:#621AFF;
      a{
-      color:#fff;
+      color:#621AFF;
+     }
+     ion-icon{
+       color:#621AFF;
      }
     
   }`:""
@@ -54,18 +50,30 @@ export const List = styled.li`
   text-transform:uppercase;
   display:flex;
   align-items:center;
+  margin-bottom:5px;
   a{
         display: flex;
     align-items: center;
   }
   ion-icon{
-  	 font-size:2em;
+  	 font-size:1.2em;
   	 padding:0.5em;
-     color:#fff;
+     color:#9E9EA8;
   }
   span{
   	 padding-left:0.5em;
 
+  }
+  &:hover{
+      background-color:rgba(118, 56, 255, 0.05);
+     border-left:3px solid #621AFF;
+     color:#621AFF;
+     a{
+      color:#621AFF;
+     }
+     ion-icon{
+       color:#621AFF;
+     }
   }
 `;
 export const Footer = styled.div`

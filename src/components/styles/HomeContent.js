@@ -3,16 +3,18 @@ import styled from "styled-components";
 export const HomeContainer = styled.section`
    width:100%;
    height:100%;
-   padding:1em 4em;
+   padding:1em 3em;
+     @media (max-width:999px){
+     padding:1em;
+   }
 `;
 
 export const TitleWrapper = styled.div`
- width:100%;
  display:flex;
  justify-content:space-between;
  color:#888;
 `;
-export const Title = styled.h3`
+export const Title = styled.h2`
    color:#000;
    text-transform:capitalize;
 `;
@@ -24,39 +26,38 @@ export const Wrapper = styled.div`
   border-collapse: collapse;
   width: 100%;
   margin-top:2em;
+  color:#455560;
+   & tr:nth-child(1){
+     background-color:#F8F9FA;
+   }
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border-top: 1px solid #eff2f7;
   text-align: left;
   padding: 8px;
+  text-transform:capitalize;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 ion-icon{
    font-size:1.4em;
+   cursor:pointer;
 }
-td ion-icon:nth-child(2){
-   color:#f00;
-}
-`
-export const LandPage = styled.img`
-   width:100%;
-   border-radius:5px;
-`;
-export const Card = styled.div`
-   margin-top:2em;
-   h4{
-   	 padding:5px 0;
-   	    text-transform:capitalize;
-   }
-   p{
-   	color:#888;
-   }
+td ion-icon:nth-child(1){
+   color:#000;
+ }
+ td ion-icon:nth-child(2){
+   color:#EB5757;
+ }
+ tr{
+ line-height:3;
+ &:hover{
+    background-color:#F6F6F7;
+ }
 
-`;
+}
+}
+ `;
 export const TotalRecieved = styled.div`
    width:100%;
    display:grid;
@@ -144,3 +145,10 @@ export const WrapperIconMessage = styled.div`
     font-size:3.2em;
   }
 `;
+ export const P = styled.p`
+   text-transform:capitalize;
+   padding:0;
+   text-align:center;
+   color:${({paid}) =>  (paid == "paid") ? "#5DC287":"#F07E7E"};
+   border:${({paid}) =>  (paid == "paid") ? "1px solid #5DC287":"1px solid #F07E7E"};
+ `; 

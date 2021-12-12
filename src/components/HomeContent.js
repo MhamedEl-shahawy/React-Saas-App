@@ -1,11 +1,14 @@
-import {useEffect,useState} from "react";
+import {useState} from "react";
+import {useObserver} from "mobx-react";
+import {Link} from "react-router-dom";
 import {HomeContainer,Title,TitleWrapper,TotalRecieved,LandPage,Wrapper,WrapperIconMessage,Card,TotalCard,Num,Pending,Draft,ProductsViews,WrapperIcon} from "./styles/HomeContent";
-import land from "./images/landpage.jpg";
-const MusicsContent = ()=>{
-
-  return(
+import {useClientStore} from "../state/ClientDataContext";
+const HomeContent = ({hideNav})=>{
+ const clientDataWrapper = useClientStore();
+ document.title = "xFatora | Dashboard";
+  return useObserver( ()=>(
   	<>
-     <HomeContainer>
+     <HomeContainer onClick={()=> hideNav(true)}>
        <TitleWrapper>
          <Title>
            Payments 
@@ -61,34 +64,22 @@ const MusicsContent = ()=>{
     <th>Phone</th>
     <th>Action</th>
   </tr>
+ {clientDataWrapper.data.map((clientInfo)=>(
   <tr>
-    <td>01</td>
-    <td>Ahmed Karam</td>
-    <td>ahmed.Mendel2@yahoo.com</td>
-    <td>+20103756483</td>
-    <td><ion-icon name="pencil-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></td>
+    <td>{clientInfo.id}</td>
+    <td>{clientInfo.name}</td>
+    <td>{clientInfo.email}</td>
+    <td>{clientInfo.phone}</td>
+    <td><Link to="/editClint/88897"><ion-icon name="pencil-outline"></ion-icon></Link> <ion-icon name="trash-outline" onClick={()=>   clientDataWrapper.removeData(clientInfo.id)}></ion-icon></td>
   </tr>
-  <tr>
-    <td>02</td>
-    <td>Mohamed Ali</td>
-    <td>mohamed@n.com</td>
-    <td>+20118363944</td>
-    <td><ion-icon name="pencil-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></td>
-  </tr>
-  <tr>
-    <td>03</td>
-    <td>Yoshi Tannamuri</td>
-    <td>yoshi@gmail.com</td>
-    <td>+20123345239</td>
-    <td><ion-icon name="pencil-outline"></ion-icon> <ion-icon name="trash-outline"></ion-icon></td>
-  </tr>
+  ))}
 </table>
 
       
        </Wrapper>
      </HomeContainer>
      </>
-  	)
+  	))
 };
 
-export default MusicsContent;
+export default HomeContent;

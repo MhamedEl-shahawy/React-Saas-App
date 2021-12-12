@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router} from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ClientDataProvider from "./state/ClientDataContext";
+import InvoicesDataProvider from "./state/InvoicesDataContext";
+
+
 ReactDOM.render(
   <React.StrictMode>
+   <ClientDataProvider>
+   <InvoicesDataProvider>
    <Router>
     <App />
    </Router>
-
+   </InvoicesDataProvider>
+    </ClientDataProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
